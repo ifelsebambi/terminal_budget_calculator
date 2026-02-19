@@ -25,7 +25,7 @@ def main():
         budget.income = float(input("What is your income?")) 
     except ValueError:
         print("Invalid input, just enter numeric value.")
-        return 
+        budget.income = float(input("What is your income?")) 
 
     while True:
         name = input("What is the expense name? (type x to exit no more expenses)")
