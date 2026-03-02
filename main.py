@@ -1,21 +1,5 @@
 from tabulate import tabulate
-
-class Budget: 
-    def __init__(self):
-        self.income = 0
-        self.expenses = []
-
-    def total_expense(self, name, amount):
-        self.expenses.append([name, float(amount)])
-
-        total = 0
-        for expense in self.expenses:
-            total += expense[1] #takes the expenses and adds them all together
-        return total
-
-    def balance(self, income, expenses):
-        total_budget = float(income) - float(expenses)
-        return total_budget 
+from budget import Budget  
     
 def display_menu(): #displays the tabulate menu when called
 
@@ -23,7 +7,8 @@ def display_menu(): #displays the tabulate menu when called
     ["Update Income", 1],
     ["Add Expense", 2],
     ["Edit Expense", 3],
-    ["Display Balance", 4]
+    ["Display Balance", 4],
+    ["Exit Program", 0]
         ]
 
     headers = [  #headers separated by comma
@@ -67,7 +52,10 @@ def main():
             user_selection = input("Expense updated. Select from the menu to proceed: ")
 
         if user_selection == "4": #DISPLAY BALANCE
+            display_menu()
             print("Balance: ", budget.balance(budget.income, total_expenses))
+            user_selection = input("Balance updated. Select from the menu to proceed: ")
+            
 
     except ValueError:
         print("Please enter a valid selection from the menu")
